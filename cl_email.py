@@ -11,7 +11,7 @@ class CL_Email:
         self.message += 'Subject: Craigslist Bot (' + str(len(craigslist_listings)) + ' new posts)\n\n'
         for post in craigslist_listings:
             self.message += '$' + str(post.price) + ' ' + post.title + \
-                            '\nKeyword matches: ' + str([k for k in post.key_matches]) + \
+                            '\nKeyword matches: ' + str([k for k in post.keyword_matches]) + \
                             '\n' + post.id + \
                             '\n' + post.summary + \
                             '\n\n------------------\n\n'

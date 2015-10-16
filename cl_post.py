@@ -4,5 +4,5 @@ class CL_Post:
         self.title = post['title']
         self.summary = post['summary']
         self.id = post['id']
-        self.key_matches = post['keyword_matches']
+        self.keyword_matches = post['keyword_matches']
         self.price = post['price']
