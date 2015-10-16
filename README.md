@@ -1,6 +1,6 @@
 # Craigslist Post Notification Bot
 ## About
-Python bot to search Craisglist for posts that match the criteria specified and send out email notifications on a predefined schedule. 
+Python bot to search Craigslist for posts that match the criteria specified and send out email notifications on a predefined schedule. 
 
 ##### data_config.json
 - categories: enter any number of category id's to include in search. Found in the url when viewing that category in your browser. Ex: sporting='sga', boats='boo'
@@ -14,7 +14,7 @@ Python bot to search Craisglist for posts that match the criteria specified and 
 - require_image: true/false, excludes posts that do not include an image if true
 
 ##### email_config.json
-- sender: gmail address of your craiglist bot
+- sender: gmail address of your craigslist bot
 - server_pwd: gmail account password for sender
 - recipients: list of all email addresses to include when sending notifications
 
