@@ -1,0 +1,24 @@
+{
+    "categories": [
+        "sga",
+        "boo"
+    ],
+    "keywords": [
+        "enter",
+        "some",
+        "keywords",
+        "here"
+    ],
+    "locations": [
+        "detroit"
+    ],
+    "logging_enabled": true,
+    "maximum_price": 100,
+    "minimum_keyword_match": 2,
+    "minimum_price": 2,
+    "notification_intervals": {
+        "12:00:00-04:00": false,
+        "18:00:00-04:00": false
+    },
+    "require_image": true
+}

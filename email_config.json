@@ -1,0 +1,8 @@
+{
+	"sender":
+		"you_bots_account@gmail.com",
+	"server_pwd":
+		"create_a_gmail_account_for_bot_and_enter_the_account_password_here",
+	"recipients":
+		["email@recipient1.com", "email@recipient2.com"]
+}
