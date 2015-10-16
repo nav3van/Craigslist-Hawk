@@ -14,9 +14,9 @@ Python bot to search Craisglist for posts that match the criteria specified and 
 - require_image: true/false, excludes posts that do not include an image if true
 
 ##### email_config.json
--sender: gmail address of your craiglist bot
--server_pwd: gmail account password for sender
--recipients: list of all email addresses to include when sending notifications
+- sender: gmail address of your craiglist bot
+- server_pwd: gmail account password for sender
+- recipients: list of all email addresses to include when sending notifications
 
 ## Usage
 ```
