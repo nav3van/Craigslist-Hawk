@@ -12,11 +12,10 @@ from log import Logging
 
 
 def CheckNotityInterval(notification_intervals):
-    for interval, flag in notification_intervals.items():
-        ut = UnixTime(interval)
-        if flag:
-            if ut <= int(time.time()):
-                notification_intervals[interval] = not flag
+    for notify_time, notify_sent_flag in notification_intervals.items():
+        if notify_sent_flag:
+            if UnixTime(notify_time) <= int(time.time()):
+                notification_intervals[notify_time] = not notify_sent_flag
                 return True
     return False
 
@@ -28,23 +27,23 @@ def NewPost(post, data_config, cl_listings):
             Log.log('Duplicate ' + data_config['title'])
             return False
 
-    intervals = [(k, v) for k, v in data_config['notification_intervals'].items()]
-    intervals = sorted(intervals, key=lambda x: (UnixTime(x[0])))
+    notify_pair = [(k, v) for k, v in data_config['notification_intervals'].items()]
+    notify_pair = sorted(notify_pair, key=lambda x: (UnixTime(x[0])))
 
-    first_interval = intervals[0]
-    last_interval = intervals[len(intervals) - 1]
+    first_notify = notify_pair[0]
+    last_notify = notify_pair[len(notify_pair) - 1]
 
-    for interval, flag in intervals:
-        if flag:
-            if interval != first_interval[0]:
-                prior_interval = interval[interval.index((interval, flag)) - 1]
-                if not prior_interval[1] and flag:
+    for notify_time, notify_sent_flag in notify_pair:
+        if notify_sent_flag:
+            if notify_time != first_notify[0]:
+                prior_interval = notify_pair[notify_pair.index((notify_time, notify_sent_flag)) - 1]
+                if not prior_interval[1] and notify_sent_flag:
                     if timestamp > UnixTime(prior_interval[0]):
                         return True
-            elif interval == first_interval[0]:
-                if timestamp >= UnixTime(last_interval[0]) - 86400:
+            elif notify_time == first_notify[0]:
+                if timestamp >= UnixTime(last_notify[0]) - 86400:
                     return True
-            elif timestamp >= UnixTime(interval):
+            elif timestamp >= UnixTime(notify_time):
                 return True
     return False
 
@@ -119,13 +118,13 @@ def PullFeeds(location, category, result, index):
     feed = feedparser.parse('http://' + location +'.craigslist.org/search/' + category + '?format=rss')
     result[index] = feed
 
-def UpdateIntervals(intervals):
+def UpdateIntervals(notify_pair):
     interval_dict = {}
-    for interval, flag in intervals.items():
-        if UnixTime(interval) <= time.time():
-            interval_dict[interval] = False
+    for notify_time, notify_sent_flag in notify_pair.items():
+        if UnixTime(notify_time) <= time.time():
+            interval_dict[notify_time] = False
         else:
-            interval_dict[interval] = True
+            interval_dict[notify_time] = True
     return interval_dict
 
 def LoadJson(file_path):
