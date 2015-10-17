@@ -24,7 +24,7 @@ def NewPost(post, data_config, cl_listings):
 
     for stored_post in cl_listings:
         if post['id'] == stored_post.id:
-            Log.log('Duplicate ' + data_config['title'])
+            Log.log('Duplicate ' + post['title'])
             return False
 
     notify_pair = [(k, v) for k, v in data_config['notification_intervals'].items()]
