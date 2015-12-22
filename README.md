@@ -1,4 +1,4 @@
-# Craigslist Post Notification Bot
+# Craigslist-Hawk
 ## About
 Python bot to search Craigslist for posts that match the criteria specified and send out email notifications on a predefined schedule. 
 
